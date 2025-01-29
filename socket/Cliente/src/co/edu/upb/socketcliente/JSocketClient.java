@@ -27,29 +27,34 @@ public class JSocketClient {
 	}
 
 	public void request(String data) {
-		try {
-			this.clientSk = new Socket(this.address, this.port);
-			this.oos = new ObjectOutputStream(this.clientSk.getOutputStream());
-			this.oos.flush();
-			this.ois = new ObjectInputStream(this.clientSk.getInputStream());
-			System.out.println("\n [Client]: Conexión exitosa.");
-			send(data);
-			while(true) {
-				try {
-					data = (String) this.ois.readObject();
-					if (data == null) {
-						closeService();
-					} else {
-						System.out.println("\n [Client]: el servidor dice:" + data);
-					}
-				} catch (Exception e) {
-					System.out.println("\n [Client]: No se puede recibir la data.");
-				}
-			}
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}		
+	    try {
+	        if (this.clientSk == null || this.clientSk.isClosed()) {
+	            this.clientSk = new Socket(this.address, this.port);
+	            this.oos = new ObjectOutputStream(this.clientSk.getOutputStream());
+	            this.oos.flush();
+	            this.ois = new ObjectInputStream(this.clientSk.getInputStream());
+	            System.out.println("\n[Client]: Conexión exitosa.");
+	        }
+
+	        send(data); // Send message
+
+	        try {
+	            String response = (String) this.ois.readObject();
+	            if (response != null) {
+	                System.out.println("\n[Client]: El servidor dice: " + response);
+	            } else {
+	                System.out.println("\n[Client]: El servidor cerró la conexión.");
+	                closeService();
+	            }
+	        } catch (Exception e) {
+	            System.out.println("\n[Client]: No se pudo recibir la data.");
+	        }
+
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
 	}
+
 
 	private void send(String data) {
 		try {
@@ -60,7 +65,7 @@ public class JSocketClient {
 		}
 	}
 	
-	private void closeService() {
+	public void closeService() {
 		try {
 			this.ois.close();
 			this.oos.close();
