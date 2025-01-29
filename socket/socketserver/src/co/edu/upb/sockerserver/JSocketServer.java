@@ -1,6 +1,10 @@
 package co.edu.upb.sockerserver;
 
 import java.io.IOException;
+
+import java.time.ZonedDateTime;
+import java.time.ZoneId;
+
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
@@ -28,6 +32,8 @@ public class JSocketServer {
 	
 	public void listening() {
 		try {
+			
+			 ZonedDateTime fechaHoraZona = ZonedDateTime.now(ZoneId.systemDefault());
 			String data;
 			System.out.println("\n [Server]: " + "Esperando.");
 			this.clientSk = this.serverSk.accept();
@@ -41,10 +47,12 @@ public class JSocketServer {
 					if (data == null) {
 						closeService();
 					} else {
-						send("Escuche esto: " + data); 
+						
+						System.out.println("HE RECIBIDO "+data+" A LAS"+ fechaHoraZona);
+						send("Escuche esto: " + data+" a las: " + fechaHoraZona); 
 					}
 				} catch (Exception e) {
-					System.out.println("\n [Server]: No se puede recibir la data.");
+					System.out.println("\n [Server]: No se puede recibir la data. 1");
 				}
 			}
 		} catch (IOException e) {
@@ -69,7 +77,7 @@ public class JSocketServer {
 			this.oos.writeObject("[Server]: " + data);
 			this.oos.flush();
 		} catch (Exception e) {
-			System.out.println("\n [Server]: No se puede enviar la data.");
+			System.out.println("\n [Server]: No se puede enviar la data. 2");
 		}
 	}
 	
