@@ -1,4 +1,4 @@
 Sistemas distribuidos con el profe Ali
 
 
-![alt text](https://i.pinimg.com/736x/38/cd/ff/38cdffb1a069da1257559fc93d113d54.jpg)
+![alt text](https://img1.picmix.com/output/pic/normal/8/6/3/8/12258368_61eb7.gif)
