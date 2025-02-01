@@ -1,6 +1,6 @@
 
 package co.edu.upb.mainserversocket;
-import co.edu.upb.sockerserver.Server;
+import co.edu.upb.songs.Server;
 
 public class BankServer {
 	

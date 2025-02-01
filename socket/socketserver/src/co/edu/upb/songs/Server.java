@@ -1,4 +1,4 @@
-package co.edu.upb.sockerserver;
+package co.edu.upb.songs;
 
 public class Server {
 	
