@@ -1,12 +1,13 @@
 package co.edu.upb.pdfconverter;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class UrlPDFConverter {
 
     // Update this path if necessary; note the executable is chrome.exe.
     final String chromePath = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe";
-
+   
     
     public void convertUrlToPdf(String url, String outputPdfPath) {
         
@@ -37,4 +38,32 @@ public class UrlPDFConverter {
     }
 
    
+    public void iterateURL(){
+    	
+    	
+    	 UrlMaking urlMaker = new UrlMaking();
+         urlMaker.setUrls();
+         ArrayList<UrlType> urls = urlMaker.getUrls();
+
+        
+         UrlPDFConverter converter = new UrlPDFConverter();
+
+         
+         for (UrlType urlType : urls) {
+             
+             String pdfPath = "C:\\hola\\" + urlType.getName().replaceAll("\\s+", "_") + ".pdf";
+             System.out.println("Converting URL: " + urlType.getUrl() + " to PDF: " + pdfPath);
+             converter.convertUrlToPdf(urlType.getUrl(), pdfPath);
+    	
+    }
+    	 
+       
+    
+    
+    }
+
+           
+    
+    
+    
 }

@@ -1,9 +1,6 @@
 package co.edu.upb.pdfconverter;
-
-
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 
 
 public class UrlMaking {
@@ -11,11 +8,21 @@ public class UrlMaking {
 	
 	public final ArrayList<UrlType> url = new ArrayList<UrlType>();
 	
+	public void setUrls() {
+		
+		urlMaking();
+	}
 	
-	public UrlMaking() {
+	public ArrayList<UrlType> getUrls() {
+		
+		return this.url;
 		
 		
-		
+	}
+	
+	
+	
+	public void urlMaking() {
 		
 		UrlType[] urlTypesArray = {
 	            new UrlType("https://co.pinterest.com/pin/653022014998039661/", "Alhaitham-Cat"),
@@ -23,7 +30,6 @@ public class UrlMaking {
 	            new UrlType("https://www.velez.com.co/chaqueta-1037745-00/p", "Velez-chaqueta-cuero"),
 	            new UrlType("https://www.velez.com.co/chaqueta-1036570-02/p", "Velez-chaqueta-cuero-miel"),
 	            new UrlType("https://www.velez.com.co/manos-libres-1038726-28/p", "bolso-bordado-peces"),
-	            
 	            new UrlType("https://unsplash.com/photos/NodtnCsLdTE", "Unsplash Lion"),
 	            new UrlType("https://unsplash.com/photos/XTQxQ-gWffI", "Unsplash Elephant"),
 	            new UrlType("https://unsplash.com/photos/AdK6DlXhMdE", "Unsplash Giraffe"),
@@ -55,6 +61,8 @@ public class UrlMaking {
 
 	        this.url.addAll(Arrays.asList(urlTypesArray));
 	    }
+	
+		
 	
 
 }
