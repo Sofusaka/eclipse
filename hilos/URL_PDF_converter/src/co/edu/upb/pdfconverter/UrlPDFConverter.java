@@ -70,7 +70,7 @@ public class UrlPDFConverter {
         // Indica que no se enviarán más tareas y espera a que finalicen las actuales
         executor.shutdown();
         try {
-            // Espera hasta 1 hora (ajusta el tiempo si es necesario)
+            // Espera hasta 1 hora 
             if (!executor.awaitTermination(1, TimeUnit.HOURS)) {
                 System.err.println("Executor did not terminate in the specified time.");
                 executor.shutdownNow();
