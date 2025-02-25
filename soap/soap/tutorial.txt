@@ -1,0 +1,27 @@
+crear el proyecto MAVEN con la arq de example (dice algo como example .org)
+
+en el pom hay q añadir las dependencias
+
+<dependency>
+            <groupId>jakarta.jws</groupId>
+            <artifactId>jakarta.jws-api</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>wscompile</artifactId>
+            <version>4.0.3</version>
+        </dependency>
+ 
+
+
+se van a donde tengan los metodos para buscar a song y añaden @WebMethod
+
+van a song y le añaden  @XmlElement a todos los metodos que sean GET o SET pq si no les da error. Los metodos que sean para formatear o imprimir FLOOOP     
+
+en la interfaz de song ponen @WebService(targetNamespace = "http://songs.upb.edu.co/", name = "InterfaceSong")  eso, y el link que deben escribir corresponde al nombre del paquete al reves (en vez de ser co.edu.upb lo ponen como siempre). Es tipo una ruta de acceso a la interfaz.
+
+Se copian del serverSOAP
+
+Para ver si funciona bien, metanse en http://localhost/song?wsdl en el navegador. Les deberia aparecer el WSDL
