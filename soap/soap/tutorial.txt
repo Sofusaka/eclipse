@@ -1,3 +1,5 @@
+es mejor que usen el de RMI como guia
+
 crear el proyecto MAVEN con la arq de example (dice algo como example .org)
 
 en el pom hay q añadir las dependencias
