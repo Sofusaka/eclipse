@@ -1,6 +1,8 @@
+
+crear el proyecto MAVEN con la arq de example. escriben maven-archetype-sim con el catalogo de Maven Central y seleccionan el ultimo q aparece. Dice org.maven.archetypes
+
 es mejor que usen el de RMI como guia
 
-crear el proyecto MAVEN con la arq de example (dice algo como example .org)
 
 en el pom hay q añadir las dependencias
 

@@ -50,9 +50,9 @@ public class SongRepository  implements InterfaceSong {
 	
 	@WebMethod
 	@Override
-	public Song[] getSongByTitle(String title) {
+	public Song[] getSongByTitle(String name) {
 		
-		return this.getSongsByMatch(title);
+		return this.getSongsByMatch(name, "name");
 	}
 	
 	@WebMethod
@@ -60,35 +60,48 @@ public class SongRepository  implements InterfaceSong {
 	public Song[] getSongByGenre(String genre) {
 		
 		
-		return this.getSongsByMatch(genre);
+		return this.getSongsByMatch(genre, "genre");
 	}
 
 	@WebMethod
 	@Override
 	public Song[] getSongByAuthor(String author) {
-		return this.getSongsByMatch(author);
+		return this.getSongsByMatch(author, "author");
 	}
 	
 	
 	//search song
-	public Song[] getSongsByMatch(String match) {
-		
-		List<Song> matchedSongs = new ArrayList<>();
-
-		
-		 if (songs != null) {
-			 for (Song song : songs) {
-			        
-			        if (song.getName().equalsIgnoreCase(match)) {
-			            matchedSongs.add(song);
-			        }
-			    }
-	        } else {
-	            System.out.println("No songs have been set.");
+	public Song[] getSongsByMatch(String match, String field) {
+	    List<Song> matchedSongs = new ArrayList<>();
+	    
+	    if (songs != null) {
+	        for (Song song : songs) {
+	            switch(field.toLowerCase()) {
+	                case "name":
+	                    if (song.getName().equalsIgnoreCase(match)) {
+	                        matchedSongs.add(song);
+	                    }
+	                    break;
+	                case "genre":
+	                    if (song.getGenre().equalsIgnoreCase(match)) {
+	                        matchedSongs.add(song);
+	                    }
+	                    break;
+	                case "author":
+	                    if (song.getAuthor().equalsIgnoreCase(match)) {
+	                        matchedSongs.add(song);
+	                    }
+	                    break;
+	                default:
+	                   
+	                    break;
+	            }
 	        }
-		return matchedSongs.toArray(new Song[matchedSongs.size()]);
-		
-		
+	    } else {
+	        System.out.println("No songs have been set.");
+	    }
+	    return matchedSongs.toArray(new Song[matchedSongs.size()]);
 	}
+
 
 }

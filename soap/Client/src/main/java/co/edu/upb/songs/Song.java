@@ -50,6 +50,17 @@ public class Song implements Serializable {
     }
     
     
+    public String getSong() {
+        return "Song: " + name + "\n" +
+               "Author: " + author + "\n" +
+               "Year: " + year + "\n" +
+               "Genre: " + genre;
+    }
+    
+    @XmlElement
+    public Song[] getSongs() {
+        return this.songs;
+    }
     
     public void setName(String name) {
         this.name = name;
@@ -68,19 +79,6 @@ public class Song implements Serializable {
     }
 
     
-    
-    
-    public String getSong() {
-        return "Song: " + name + "\n" +
-               "Author: " + author + "\n" +
-               "Year: " + year + "\n" +
-               "Genre: " + genre;
-    }
-    
-    @XmlElement
-    public Song[] getSongs() {
-        return this.songs;
-    }
     
     
     public void printSongs() {
